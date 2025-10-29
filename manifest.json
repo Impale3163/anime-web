@@ -1,0 +1,16 @@
+{
+    "name": "Anime & Manga Asistanı",
+    "short_name": "Anime AI",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#011640",
+    "theme_color": "#234059",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "logo.png.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
