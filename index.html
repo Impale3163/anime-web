@@ -8,6 +8,40 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        @media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        display: none !important;
+    }
+    
+    .main-content {
+        padding: 20px 10px;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+    
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    input, textarea, select, button {
+        font-size: 16px;
+    }
+}
         * {
             margin: 0;
             padding: 0;
