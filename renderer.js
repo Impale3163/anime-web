@@ -85,20 +85,10 @@ document.getElementById('askBtn').addEventListener('click', async () => {
 3. **DİL**: Kısa, net, öğretici ve sade cevaplar ver.`;
 
     try {
-        const response = await axios.post('https://api.anthropic.com/v1/messages', {
-            model: 'claude-sonnet-4-20250514',
-            max_tokens: 1024,
-            system: systemPrompt,
-            messages: [{
-                role: 'user',
-                content: question
-            }]
-        }, {
-            headers: {
-                'x-api-key': API_KEY,
-                'anthropic-version': '2023-06-01',
-                'content-type': 'application/json'
-            }
+        const response = await axios.post('/api/ask', {
+            apiKey: API_KEY,
+            systemPrompt: systemPrompt,
+            question: question
         });
         
         const answer = response.data.content[0].text;
