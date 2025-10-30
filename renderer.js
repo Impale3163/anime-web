@@ -1,17 +1,9 @@
 // axios CDN'den yüklendi
 
+const API_KEY = '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';  // ← API KEY'inizi buraya yapıştırın!
+
 let currentResponse = null;
 let history = [];
-
-// API KEY'i kullanıcıdan al
-let API_KEY = localStorage.getItem('apiKey');
-
-if (!API_KEY) {
-    API_KEY = prompt('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');
-    if (API_KEY) {
-        localStorage.setItem('apiKey', API_KEY);
-    }
-}
 
 // Tür değiştiğinde label'ları güncelle
 document.getElementById('contentType').addEventListener('change', (e) => {
@@ -53,8 +45,8 @@ document.getElementById('askBtn').addEventListener('click', async () => {
         return;
     }
     
-    if (!API_KEY) {
-        alert('API KEY girilmedi! Sayfayı yenileyin.');
+    if (!API_KEY || API_KEY === 'BURAYA_API_KEY_YAPISTIR') {
+        alert('API KEY girilmemiş! Lütfen renderer.js dosyasında API KEY\'i güncelleyin.');
         return;
     }
     
@@ -104,8 +96,10 @@ document.getElementById('askBtn').addEventListener('click', async () => {
         console.error('HATA:', error);
         let errorMsg = 'Bir hata oluştu!';
         
-        if (error.response) {
-            errorMsg = error.response.data?.error?.message || 'API hatası';
+        if (error.response && error.response.data) {
+            if (error.response.data.error) {
+                errorMsg = error.response.data.error.message || error.response.data.error;
+            }
         } else if (error.message) {
             errorMsg = error.message;
         }
